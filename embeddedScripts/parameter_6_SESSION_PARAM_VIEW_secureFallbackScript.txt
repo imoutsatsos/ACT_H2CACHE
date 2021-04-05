@@ -1,0 +1,1 @@
+return 'Error in SESSION_PARAM_VIEW script'

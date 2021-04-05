@@ -1,0 +1,6 @@
+import org.kohsuke.stapler.Stapler 
+def sessionID= Stapler.getCurrentRequest().getSession().getId() 
+dbInstance= "${jenkinsProject.name}_$sessionID" as String 
+return """ 
+<input id="helperDb" name="value" type="text" class="setting-input " value="$dbInstance"> 
+"""

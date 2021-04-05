@@ -1,0 +1,13 @@
+/*
+A JSON Formatted parameter
+Note TSTAMP in JSON is important
+JSON parameters are suffixed by a timestamp so their names are unique
+as a result they are stored in the H2 database without overwriting old entries
+*/
+d = new Date() 
+tstamp= d.format('yyyyMMddhhmmss') 
+return """
+<textarea id="transferParam" name="value" rows="5" class="setting-input   ">
+{ "SOURCE_DATA":"$SOURCE_DATA", "LAYOUT": { "vFILLSIZE": "5", "vFILLBY": "rowsFirst"},  "TSTAMP": "$tstamp" }
+</textarea>
+ """

@@ -1,0 +1,9 @@
+import org.h2.Driver
+import groovy.sql.Sql
+data=[]
+ /* Create aconnection to HELPER_DB */
+sql = Sql.newInstance("jdbc:h2:mem:$HELPER_DB;DB_CLOSE_DELAY=-1", "org.h2.Driver")
+sql.eachRow("SELECT * FROM $SESSION_PARAM_TABLE" as String){row->
+data.add(['param':row.PARAM,'paramValue':row.PARAMVALUE])
+}
+return data.collect{it.param+':-->'+it.paramValue}

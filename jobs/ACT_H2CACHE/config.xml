@@ -1,0 +1,314 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?><project>
+  <actions/>
+  <description>Test harness for using Active Choice parameters to cache simple and complex job parameters in a session+job embedded H2 database </description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <job-metadata plugin="metadata@1.1.0b">
+      <values class="linked-list">
+        <metadata-string>
+          <name>job-type</name>
+          <description>Options: visualization,data-source
+Galaxy: tool.tool_type</description>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>false</exposedToEnvironment>
+          <value>visualization</value>
+        </metadata-string>
+        <metadata-string>
+          <name>output-format</name>
+          <description>This is the data type of the output file. It can be one of the supported data types ( e.g., "tabular" ) or the format of the tool's input dataset ( e.g., format="input" ). 
+It can also be an image type if the output is destined for visualization</description>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>false</exposedToEnvironment>
+          <value>csv,rds,png</value>
+        </metadata-string>
+        <metadata-string>
+          <name>metadata-source</name>
+          <description>This reads the metadata information from the tool's input dataset properties file(named with the extension.properties)</description>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>true</exposedToEnvironment>
+          <value>properties</value>
+        </metadata-string>
+        <metadata-string>
+          <name>project-repository</name>
+          <description>Bitbucket repository for this project. example https://bitbucket.org/novartisnibr/qmic-job_name
+Clear if no repository </description>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>true</exposedToEnvironment>
+          <value/>
+        </metadata-string>
+        <metadata-string>
+          <name>project-status</name>
+          <description>A status flag for the project.(test,demo,production,deprecated)</description>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>false</exposedToEnvironment>
+          <value>test</value>
+        </metadata-string>
+        <metadata-tree>
+          <name>stats-engine</name>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>false</generated>
+          <exposedToEnvironment>false</exposedToEnvironment>
+          <children class="linked-list">
+            <metadata-string>
+              <name>library</name>
+              <description>comma separated list of stat-engine libraries required for the job.</description>
+              <parent class="metadata-tree" reference="../../.."/>
+              <generated>false</generated>
+              <exposedToEnvironment>true</exposedToEnvironment>
+              <value>caret,sm</value>
+            </metadata-string>
+            <metadata-string>
+              <name>export-session</name>
+              <description>Options: true/false If the code supports it, it will export session data from the stat engine for debugging purposes</description>
+              <parent class="metadata-tree" reference="../../.."/>
+              <generated>false</generated>
+              <exposedToEnvironment>true</exposedToEnvironment>
+              <value>false</value>
+            </metadata-string>
+          </children>
+        </metadata-tree>
+        <metadata-tree>
+          <name>job-info</name>
+          <parent class="job-metadata" reference="../../.."/>
+          <generated>true</generated>
+          <exposedToEnvironment>false</exposedToEnvironment>
+          <children class="linked-list">
+            <metadata-tree>
+              <name>last-saved</name>
+              <description/>
+              <parent class="metadata-tree" reference="../../.."/>
+              <generated>true</generated>
+              <exposedToEnvironment>false</exposedToEnvironment>
+              <children class="linked-list">
+                <metadata-date>
+                  <name>time</name>
+                  <description/>
+                  <parent class="metadata-tree" reference="../../.."/>
+                  <generated>true</generated>
+                  <exposedToEnvironment>false</exposedToEnvironment>
+                  <value>
+                    <time>1617631860074</time>
+                    <timezone>America/New_York</timezone>
+                  </value>
+                  <checked>false</checked>
+                </metadata-date>
+                <metadata-tree>
+                  <name>user</name>
+                  <parent class="metadata-tree" reference="../../.."/>
+                  <generated>true</generated>
+                  <exposedToEnvironment>false</exposedToEnvironment>
+                  <children class="linked-list">
+                    <metadata-string>
+                      <name>display-name</name>
+                      <description/>
+                      <parent class="metadata-tree" reference="../../.."/>
+                      <generated>true</generated>
+                      <exposedToEnvironment>false</exposedToEnvironment>
+                      <value>Ioannis Moutsatsos</value>
+                    </metadata-string>
+                    <metadata-string>
+                      <name>full-name</name>
+                      <description/>
+                      <parent class="metadata-tree" reference="../../.."/>
+                      <generated>true</generated>
+                      <exposedToEnvironment>false</exposedToEnvironment>
+                      <value>Ioannis Moutsatsos</value>
+                    </metadata-string>
+                  </children>
+                </metadata-tree>
+              </children>
+            </metadata-tree>
+          </children>
+        </metadata-tree>
+      </values>
+    </job-metadata>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.3">
+          <name>WHAT_IS_THIS</name>
+          <description>Different options of the SOURCE_DATA and JSON_PARAM parameters will be cached</description>
+          <randomName>choice-parameter-706646599996927</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.72">
+              <script>return """
+Test Harness for an H2 In-Memory Job Parameter Cache. &lt;b&gt;Requires that the h2 jar is in the Jenkins system path&lt;/b&gt;
+"""
+</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.72">
+              <script/>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters/>
+          <choiceType>ET_FORMATTED_HTML</choiceType>
+          <omitValueField>false</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.3">
+          <name>HELPER_DB</name>
+          <description>A unique H2 DB instance identifier. Created by concatenating the job name with the user session id. &lt;p&gt;HELPER_DB provides a common SQL connection name for other AC parameters and job actions</description>
+          <randomName>choice-parameter-702205291254335</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.72">
+              <script>import org.kohsuke.stapler.Stapler 
+def sessionID= Stapler.getCurrentRequest().getSession().getId() 
+dbInstance= "${jenkinsProject.name}_$sessionID" as String 
+return """ 
+&lt;input id="helperDb" name="value" type="text" class="setting-input " value="$dbInstance"&gt; 
+"""</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.72">
+              <script/>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters/>
+          <choiceType>ET_FORMATTED_HTML</choiceType>
+          <omitValueField>true</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+        <org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.3">
+          <name>SOURCE_DATA</name>
+          <description>A selectable AC parameter option. Cached in the H2 SESSION_PARAM_TABLE</description>
+          <randomName>choice-parameter-1148199016964167</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.72">
+              <script>return ['carrot.csv','apple.csv','oil.csv','milk.csv']</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.72">
+              <script/>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters/>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.3">
+          <name>JSON_PARAM</name>
+          <description>[hidden] An AC-Reactive Reference to cache a complex parameter in JSON format. Cached in the H2 SESSION_PARAM_TABLE</description>
+          <randomName>choice-parameter-97928931452181</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.72">
+              <script>/*
+A JSON Formatted parameter
+Note TSTAMP in JSON is important
+JSON parameters are suffixed by a timestamp so their names are unique
+as a result they are stored in the H2 database without overwriting old entries
+*/
+d = new Date() 
+tstamp= d.format('yyyyMMddhhmmss') 
+return """
+&lt;textarea id="transferParam" name="value" rows="5" class="setting-input   "&gt;
+{ "SOURCE_DATA":"$SOURCE_DATA", "LAYOUT": { "vFILLSIZE": "5", "vFILLBY": "rowsFirst"},  "TSTAMP": "$tstamp" }
+&lt;/textarea&gt;
+ """</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.72">
+              <script/>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters>SOURCE_DATA</referencedParameters>
+          <choiceType>ET_FORMATTED_HTML</choiceType>
+          <omitValueField>true</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.3">
+          <name>SESSION_PARAM_TABLE</name>
+          <description>The Job Session Parameter Table. &lt;p&gt; Caches user selectable job parameters as key-value pairs that can be accessed 'out-of sequence'. &lt;p&gt;It uses the TSTAMP suffix to save the JSON_PARAM with a unique names so multiple settings can be cached.</description>
+          <randomName>choice-parameter-97929014628395</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.ScriptlerScript">
+            <scriptlerScriptId>H2_inMem_ParameterDB.groovy</scriptlerScriptId>
+            <parameters class="linked-hash-map">
+              <entry>
+                <string>vHELPER_DB</string>
+                <string>$HELPER_DB</string>
+              </entry>
+              <entry>
+                <string>vSTOREDPARAMS</string>
+                <string>JSON_PARAM,SOURCE_DATA</string>
+              </entry>
+            </parameters>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters>JSON_PARAM,SOURCE_DATA,HELPER_DB</referencedParameters>
+          <choiceType>ET_FORMATTED_HTML</choiceType>
+          <omitValueField>true</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.3">
+          <name>SESSION_PARAM_VIEW</name>
+          <description/>
+          <randomName>choice-parameter-2244461451454584</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.72">
+              <script>import org.h2.Driver
+import groovy.sql.Sql
+data=[]
+ /* Create aconnection to HELPER_DB */
+sql = Sql.newInstance("jdbc:h2:mem:$HELPER_DB;DB_CLOSE_DELAY=-1", "org.h2.Driver")
+sql.eachRow("SELECT * FROM $SESSION_PARAM_TABLE" as String){row-&gt;
+data.add(['param':row.PARAM,'paramValue':row.PARAMVALUE])
+}
+return data.collect{it.param+':--&gt;'+it.paramValue}</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.72">
+              <script>return 'Error in SESSION_PARAM_VIEW script'</script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>ACT_H2CACHE</projectName>
+          <projectFullName>ACT_H2CACHE</projectFullName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters>HELPER_DB,SESSION_PARAM_TABLE</referencedParameters>
+          <choiceType>ET_UNORDERED_LIST</choiceType>
+          <omitValueField>true</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>
