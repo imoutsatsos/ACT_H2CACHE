@@ -1,5 +1,5 @@
 # ACT_H2CACHE README #
-ACT_H2CACHE:Test harness for using Active Choice parameters to cache simple and complex job parameters in a session+job embedded H2 database 
+Test harness for using Active Choice parameters to cache simple and complex job parameters in a session+job embedded H2 database 
 
 ### What is this repository for? ###
 
@@ -10,7 +10,9 @@ The repository provides an archive of the key artifacts required to setup (or up
 * Shared External scripts
 
 ### Job Dependencies ###
+The h2 Database jar file should be placed in a Java external directory scanned by Jenkins. To identify a proper location run the following command in the Jenkins script console ```println System.getProperty("java.ext.dirs")```. This will print all external locations scanned by Jenkins for java libraries.
 
+Then place the h2 jar in one of the reported java external directories and restart your server for this to take effect.
 ### Deployment Instructions ###
 
 * Clone the repository ```git clone https://github.com/imoutsatsos/JENKINS-ACT_H2CACHE.git```
@@ -31,12 +33,5 @@ The repository provides an archive of the key artifacts required to setup (or up
 
 ### How do I build this job? ###
 
-1. 
-2. 
-3. 
-4. 
+Change the Active Choice parameters in the UI and see them (as a bulleted list) saved in the embedded H2 instance. Excuting a build deletes and shuts down the H2 instance 
 
-
-### Who do I talk to? ###
-
-* Ioannis K. Moutsatsos
