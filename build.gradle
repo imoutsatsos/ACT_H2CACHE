@@ -1,8 +1,6 @@
 plugins {
     id 'base'
-//    id "org.ajoberstar.grgit" version "2.1.0"
 }
-
 
 description = 'Gradle Job Deployment Script'
 version = '1.0'
@@ -10,7 +8,7 @@ version = '1.0'
 ext {
     jjName = 'qmic-ACT_H2CACHE'
     job_name='ACT_H2CACHE'
-    jenkinsHome=System.getenv("JENKINS_HOME")//.replace('\\','/')
+    jenkinsHome=System.getenv("JENKINS_HOME")
     scriptletPath="$jenkinsHome/scriptler/scripts" 
     newScriptlets= []
 if (new File("scriptler/scripts").exists()){
@@ -21,9 +19,6 @@ if (new File("scriptler/scripts").exists()){
 task copyConfig(type: Copy) {
     from "jobs/$job_name/config.xml"
     into "$jenkinsHome/jobs/$job_name/"
-//    rename { filename ->
-//        filename.replace 'xml', 'deploy'
-//    }
     inputs.sourceFiles.stopExecutionIfEmpty()
 }
 
@@ -77,12 +72,3 @@ if (! new File("backup").exists()){
     }
     }
 }
-
-//task cloneGitRepo{
-//
-//doLast {
-//    
-//    grgit.clone(dir: file("$jjName"), uri: "https://moutsio1@bitbucket.org/novartisnibr/${jjName}.git")
-//
-//  }
-//  }
